@@ -1,6 +1,5 @@
 object Kotlin {
-    const val version = "1.7.20"
-    const val jvmVersion = "1.6.10"
+    const val version = "1.8.10"
 
     private const val coroutineVersion = "1.6.3"
     const val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
