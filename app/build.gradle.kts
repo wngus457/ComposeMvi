@@ -1,17 +1,19 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.androidApplication)
+    id(Plugins.android)
+    id(Plugins.hiltAndroid)
+    id(Plugins.kotlinKapt)
 }
 
 android {
-    compileSdk = 33
+    compileSdk = AppConfig.compileSdk
 
     defaultConfig {
-        applicationId = "com.juhyeon.composemvi"
-        minSdk = 28
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0.0"
+        applicationId = AppConfig.applicationId
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -37,7 +39,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0"
+        kotlinCompilerExtensionVersion = Compose.composeVersion
     }
     packagingOptions {
         resources {
@@ -48,16 +50,15 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    implementation("androidx.activity:activity-compose:1.3.1")
-    implementation("androidx.compose.ui:ui:1.2.0")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.2.0")
-    implementation("androidx.compose.material:material:1.2.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.2.0")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.2.0")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.2.0")
+    implementation(platform(Compose.bom))
+    implementation(Compose.ui)
+    implementation(Compose.tooling)
+    implementation(Compose.toolingPreview)
+    implementation(Compose.material)
+    implementation(Compose.material3)
+    implementation(Compose.icon)
+    implementation(Compose.hiltNavigation)
+
+    implementation(DaggerHilt.hiltAndroid)
+    kapt(DaggerHilt.hiltAndroidCompiler)
 }
