@@ -14,3 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ComposeMvi"
 include(":app")
+include(":shared:core-mvi")

@@ -49,6 +49,7 @@ android {
 }
 
 dependencies {
+    implementation(project(Modules.coreMvi))
 
     implementation(platform(Compose.bom))
     implementation(Compose.ui)
