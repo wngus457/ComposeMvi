@@ -14,7 +14,7 @@ class MviReducer<Event : UiEvent, State : UiState, Effect : UiEffect>(
     private val _eventFlow = MutableSharedFlow<Event>()
 
     private val _effectFlow = Channel<Effect>()
-    private val effectFlow = _effectFlow.receiveAsFlow()
+    val effectFlow = _effectFlow.receiveAsFlow()
 
     init {
         handleEvent()
