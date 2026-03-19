@@ -1,8 +1,8 @@
 package com.juhyeon.composemvi
 
-import UiEffect
-import UiEvent
-import UiState
+import com.juhyeon.composemvi.core.mvi.UiEffect
+import com.juhyeon.composemvi.core.mvi.UiEvent
+import com.juhyeon.composemvi.core.mvi.UiState
 
 interface MainContract {
 

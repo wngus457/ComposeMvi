@@ -1,27 +1,19 @@
 package com.juhyeon.composemvi
 
-import MviReducer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.juhyeon.composemvi.core.mvi.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
 
-) : ViewModel() {
+) : BaseViewModel<MainContract.Event, MainContract.State, MainContract.Effect>() {
 
-    private val reducer = MviReducer<MainContract.Event, MainContract.State, MainContract.Effect>(
-        viewModelScope = viewModelScope,
-        initialState = initState(),
-        handleEvent = ::handleEvent
-    )
-
-    private fun initState() = MainContract.State(
+    override fun initState() = MainContract.State(
         mainState = MainContract.State.MainState.Loading
     )
 
-    private fun handleEvent(event: MainContract.Event) {
+    override fun handleEvent(event: MainContract.Event) {
 
     }
 }
