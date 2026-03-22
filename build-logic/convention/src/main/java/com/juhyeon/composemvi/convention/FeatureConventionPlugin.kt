@@ -13,6 +13,7 @@ import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
+import kotlin.text.set
 
 class FeatureConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -24,7 +25,6 @@ class FeatureConventionPlugin : Plugin<Project> {
                 apply("kotlin-parcelize")
                 apply("org.jetbrains.kotlin.plugin.compose")
             }
-
             extensions.configure<LibraryExtension> {
                 configureCommonExtension(this)
 
@@ -51,9 +51,14 @@ class FeatureConventionPlugin : Plugin<Project> {
 
                 dependencies {
                     add("implementation", project(":shared:core-mvi"))
+                    add("implementation", project(":shared:util:common"))
+                    add("implementation", project(":shared:navigation"))
+
+                    add("implementation", project(":domain"))
 
                     add("implementation", platform(libs.findLibrary("compose-bom").get()))
                     add("implementation", libs.findBundle("compose").get())
+                    add("implementation", libs.findLibrary("compose-navigation").get())
 
                     add("implementation", libs.findLibrary("coil-core").get())
                     add("implementation", libs.findLibrary("coil-compose").get())

@@ -14,7 +14,7 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 
-class AndroidLibraryConventionPlugin : Plugin<Project> {
+class SharedLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
@@ -50,11 +50,10 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
                 dependencies {
+                    add("implementation", project(":domain"))
+
                     add("implementation", platform(libs.findLibrary("compose-bom").get()))
                     add("implementation", libs.findBundle("compose").get())
-
-                    add("implementation", libs.findLibrary("coil-core").get())
-                    add("implementation", libs.findLibrary("coil-compose").get())
 
                     add("implementation", libs.findLibrary("hilt-android").get())
                     add("ksp", libs.findLibrary("hilt-android-compiler").get())

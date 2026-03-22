@@ -1,3 +1,3 @@
 plugins {
-    id("composemvi.android.application")
+    id("android.app.convention")
 }

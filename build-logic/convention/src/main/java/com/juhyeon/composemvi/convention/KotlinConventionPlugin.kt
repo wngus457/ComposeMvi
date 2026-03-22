@@ -14,23 +14,12 @@ class KotlinConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
-                apply("java-library")
-                apply("org.jetbrains.kotlin.jvm")
+                apply("kotlin")
             }
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
-
-            extensions.configure<KotlinProjectExtension> {
-                java {
-                    sourceCompatibility = JavaVersion.VERSION_17
-                    targetCompatibility = JavaVersion.VERSION_17
-                }
-
-                dependencies {
-                    add("implementation", libs.findLibrary("coroutine-core").get())
-                    add("implementation", libs.findLibrary("coroutine-core-jvm").get())
-                    add("implementation", libs.findLibrary("lifecycle-viewmodel").get())
-                }
+            dependencies {
+                add("implementation", libs.findLibrary("coroutine-core").get())
             }
         }
     }

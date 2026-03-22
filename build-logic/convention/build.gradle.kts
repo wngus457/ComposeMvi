@@ -12,20 +12,28 @@ dependencies {
 gradlePlugin {
     plugins {
         register("AndroidApplicationPlugin") {
-            id = "composemvi.android.application"
+            id = "android.app.convention"
             implementationClass = "com.juhyeon.composemvi.convention.AndroidApplicationConventionPlugin"
         }
-        register("AndroidLibraryPlugin") {
-            id = "composemvi.android.library"
-            implementationClass = "com.juhyeon.composemvi.convention.AndroidLibraryConventionPlugin"
+        register("SharedLibraryPlugin") {
+            id = "android.library.convention"
+            implementationClass = "com.juhyeon.composemvi.convention.SharedLibraryConventionPlugin"
         }
         register("FeaturePlugin") {
-            id = "composemvi.android.feature"
+            id = "android.feature.convention"
             implementationClass = "com.juhyeon.composemvi.convention.FeatureConventionPlugin"
         }
         register("KotlinPlugin") {
-            id = "composemvi.kotlin"
+            id = "android.kotlin.convention"
             implementationClass = "com.juhyeon.composemvi.convention.KotlinConventionPlugin"
+        }
+        register("DataPlugin") {
+            id = "android.data.convention"
+            implementationClass = "com.juhyeon.composemvi.convention.DataConventionPlugin"
+        }
+        register("DomainPlugin") {
+            id = "android.domain.convention"
+            implementationClass = "com.juhyeon.composemvi.convention.DomainConventionPlugin"
         }
     }
 }

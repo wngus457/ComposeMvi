@@ -1,3 +1,12 @@
+buildscript {
+    dependencies {
+        classpath(libs.agp)
+        classpath(libs.ksp)
+        classpath(libs.kotlin.gradle.plugin)
+        classpath(libs.serialization)
+    }
+}
+
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
@@ -5,5 +14,11 @@ plugins {
     alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.hilt.android) apply false
-    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.serialization) apply false
+    id("android.app.convention") apply false
+    id("android.feature.convention") apply false
+    id("android.kotlin.convention") apply false
+    id("android.data.convention") apply false
+    id("android.library.convention") apply false
+    id("android.domain.convention") apply false
 }

@@ -19,6 +19,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.android")
                 apply("dagger.hilt.android.plugin")
                 apply("com.google.devtools.ksp")
+                apply("org.jetbrains.kotlin.plugin.serialization")
                 apply("org.jetbrains.kotlin.plugin.compose")
             }
 
@@ -69,17 +70,35 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
 
                 dependencies {
                     add("implementation", project(":shared:core-mvi"))
+                    add("implementation", project(":shared:util:common"))
+                    add("implementation", project(":shared:navigation"))
+
+                    add("implementation", project(":domain"))
+
+                    add("implementation", project(":data:remote"))
+                    add("implementation", project(":data:local"))
+                    add("implementation", project(":data:mapper"))
+
+                    add("implementation", project(":feature:splash"))
+                    add("implementation", project(":feature:home"))
+
 
                     add("implementation", platform(libs.findLibrary("compose-bom").get()))
                     add("implementation", libs.findBundle("compose").get())
                     add("implementation", libs.findLibrary("compose-navigation").get())
 
+                    add("implementation", libs.findLibrary("accompainst-system-ui").get())
+
+                    add("implementation", libs.findBundle("retrofit").get())
+
                     add("implementation", libs.findLibrary("hilt-android").get())
                     add("ksp", libs.findLibrary("hilt-android-compiler").get())
 
-                    add("testImplementation", libs.findLibrary("junit").get())
-                    add("androidTestImplementation", libs.findLibrary("ext-junit").get())
-                    add("androidTestImplementation", libs.findLibrary("espresso-core").get())
+                    add("implementation", libs.findLibrary("room-runtime").get())
+                    add("implementation", libs.findLibrary("room-ktx").get())
+                    add("ksp", libs.findLibrary("room-compiler").get())
+
+                    add("implementation", libs.findLibrary("serialization").get())
                 }
             }
         }
