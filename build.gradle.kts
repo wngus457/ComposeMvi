@@ -1,14 +1,24 @@
 buildscript {
     dependencies {
-        classpath(DaggerHilt.hiltPlugin)
-        classpath(Android.AGP)
-        classpath(Kotlin.gradlePlugin)
+        classpath(libs.agp)
+        classpath(libs.ksp)
+        classpath(libs.kotlin.gradle.plugin)
+        classpath(libs.serialization)
     }
 }
 
 plugins {
-    id("com.android.application") version "7.4.2" apply false
-    id("com.android.library") version "7.4.2" apply false
-    id("org.jetbrains.kotlin.android") version "1.8.10" apply false
-    id("org.jetbrains.kotlin.jvm") version "1.8.10" apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kotlin.compose) apply false
+    alias(libs.plugins.hilt.android) apply false
+    alias(libs.plugins.serialization) apply false
+    id("android.app.convention") apply false
+    id("android.feature.convention") apply false
+    id("android.kotlin.convention") apply false
+    id("android.data.convention") apply false
+    id("android.library.convention") apply false
+    id("android.domain.convention") apply false
 }

@@ -1,8 +1,8 @@
 plugins {
-    id("kotlin")
+    id("android.kotlin.convention")
 }
 
 dependencies {
-    implementation(Kotlin.coroutineCore)
-    implementation(Kotlin.coroutineCoreJvm)
+    implementation(libs.coroutine.core.jvm)
+    implementation(libs.lifecycle.viewmodel)
 }
